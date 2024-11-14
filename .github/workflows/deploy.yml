@@ -1,0 +1,14 @@
+name: Deploy Pipeline
+
+on:
+  workflow_dispatch:  # Déclenchement manuel nécessaire
+
+jobs:
+  release:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: release-drafter/release-drafter@v6
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
