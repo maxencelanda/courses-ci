@@ -8,11 +8,16 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      pull-requests: write
-    
     steps:
-      - uses: release-drafter/release-drafter@v6
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}  # Utilise le nom du tag poussé
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            ## Changelog
+          draft: false
+          prerelease: false
         env:
-          GITHUB_TOKEN: ${{ github.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
