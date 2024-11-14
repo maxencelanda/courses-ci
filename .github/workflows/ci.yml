@@ -23,4 +23,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: npm init @eslint/config@latest
+      - run: npm run lint
